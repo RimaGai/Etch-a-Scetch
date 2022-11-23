@@ -1,4 +1,4 @@
-const gridSize = 16;
+const gridSquares = 8;
 const grid = document.querySelector(".container");
 
 function createGrid(gridTotal) {
@@ -7,14 +7,19 @@ function createGrid(gridTotal) {
     row.classList.add("row");
 
     for (let j = 0; j < gridTotal; j++) {
-      const squareSize = 960 / gridSize;
-      const column = document.createElement("div");
-      column.style.width = `${squareSize}px`;
-      column.style.height = `${squareSize}px`;
-      column.classList.add("column");
-      row.appendChild(column);
+      const gridSize = 600 / gridSquares;
+      const cell = document.createElement("div");
+      cell.style.width = `${gridSize}px`;
+      cell.style.height = `${gridSize}px`;
+      cell.classList.add("cell");
+      row.appendChild(cell);
+
+      //hover effect for changing background color
+      cell.addEventListener("mouseenter", (e) => {
+        e.target.style.backgroundColor = "grey";
+      });
     }
     grid.appendChild(row);
   }
 }
-createGrid(gridSize);
+createGrid(gridSquares);
