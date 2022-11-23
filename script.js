@@ -1,35 +1,32 @@
-const gridSquares = 8;
-const grid = document.querySelector(".container");
 const button = document.querySelector(".button");
+const grid = document.querySelector(".container");
 
-function createGrid(gridTotal) {
-  for (let i = 0; i < gridTotal; i++) {
-    const row = document.createElement("div");
-    row.classList.add("row");
+//Creates a grid
+function createGrid(size) {
+  grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-    for (let j = 0; j < gridTotal; j++) {
-      const gridSize = 600 / gridSquares;
-      const cell = document.createElement("div");
-      cell.classList.add("cell");
-      cell.style.width = `${gridSize}px`;
-      cell.style.height = `${gridSize}px`;
-      row.appendChild(cell);
+  const amountOfDivs = size * size;
 
-      //hover effect for changing background color
-      cell.addEventListener("mouseenter", (e) => {
-        e.target.style.backgroundColor = "grey";
-      });
-    }
-    grid.appendChild(row);
+  for (let i = 0; i < amountOfDivs; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    grid.insertAdjacentElement("beforeend", cell);
+
+    //Adds hover effect that changes color of squares
+    cell.addEventListener("mouseenter", (e) => {
+      e.target.style.backgroundColor = "grey";
+    });
   }
 }
-createGrid(gridSquares);
+createGrid(16);
 
+//Let's user change the amount of squares
 button.addEventListener("click", () => {
   let userGrid = Number(prompt("How many squares do you want?"));
   while (userGrid > 100) {
     userGrid = Number(prompt("Enter number lower that 100"));
   }
-  grid.replaceChildren();
+  grid.innerHTML = "";
   createGrid(userGrid);
 });
