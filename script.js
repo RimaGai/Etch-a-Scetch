@@ -1,5 +1,6 @@
 const button = document.querySelector(".size-button");
 const grid = document.querySelector(".container");
+const deleteButton = document.querySelector(".delete");
 
 //Creates a grid
 function createGrid(size) {
@@ -34,4 +35,9 @@ button.addEventListener("click", () => {
   if (userGrid == "" || isNaN(userGrid)) {
     createGrid(16);
   }
+});
+
+deleteButton.addEventListener("click", () => {
+  grid.innerHTML = "";
+  createGrid(16);
 });
