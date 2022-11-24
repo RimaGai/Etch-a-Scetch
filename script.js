@@ -1,6 +1,7 @@
 const button = document.querySelector(".size-button");
 const grid = document.querySelector(".container");
 const deleteButton = document.querySelector(".delete");
+let color = "grey";
 
 //Creates a grid
 function createGrid(size) {
@@ -15,11 +16,10 @@ function createGrid(size) {
     grid.insertAdjacentElement("beforeend", cell);
 
     //Adds hover effect that changes color of squares
-    cell.addEventListener("mouseenter", (e) => {
-      e.target.style.backgroundColor = "grey";
-    });
+    cell.addEventListener("mouseenter", chooseColor);
   }
 }
+
 createGrid(16);
 
 //Let's user change the amount of squares
@@ -37,6 +37,29 @@ button.addEventListener("click", () => {
   }
 });
 
+//Creates random rgb color
+function randomRGB() {
+  let x = Math.floor(Math.random() * 256);
+  let y = Math.floor(Math.random() * 256);
+  let z = Math.floor(Math.random() * 256);
+  let rgbColor = "rgb(" + x + "," + y + "," + z + ")";
+  return rgbColor;
+}
+
+//Let's you choose between default and random colors
+function chooseColor() {
+  if (color == "random") {
+    this.style.backgroundColor = randomRGB();
+  } else {
+    this.style.backgroundColor = color;
+  }
+}
+
+function setColor(colorChoice) {
+  color = colorChoice;
+}
+
+//Clears the grid
 deleteButton.addEventListener("click", () => {
   grid.innerHTML = "";
   createGrid(16);
