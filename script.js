@@ -1,4 +1,4 @@
-const button = document.querySelector(".button");
+const button = document.querySelector(".size-button");
 const grid = document.querySelector(".container");
 
 //Creates a grid
