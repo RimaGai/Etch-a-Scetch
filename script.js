@@ -29,4 +29,9 @@ button.addEventListener("click", () => {
   }
   grid.innerHTML = "";
   createGrid(userGrid);
+
+  //Returns original grid if user cancels prompt or enters a string
+  if (userGrid == "" || isNaN(userGrid)) {
+    createGrid(16);
+  }
 });
