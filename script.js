@@ -59,8 +59,7 @@ function setColor(colorChoice) {
   color = colorChoice;
 }
 
-//Clears the grid
-deleteButton.addEventListener("click", () => {
-  grid.innerHTML = "";
-  createGrid(16);
-});
+function clearBoard() {
+  let divs = document.querySelectorAll(".cell");
+  divs.forEach((div) => (div.style.backgroundColor = "white"));
+}
