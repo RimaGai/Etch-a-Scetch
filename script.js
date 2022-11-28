@@ -1,6 +1,6 @@
 const button = document.querySelector(".size-button");
 const grid = document.querySelector(".container");
-let color = "grey";
+let color = "gray";
 
 //Creates a grid
 function createGrid(size) {
@@ -46,16 +46,21 @@ function randomRGB() {
 }
 
 //Let's you choose between default and random colors
+
+const colorBtn = document
+  .querySelector(".color")
+  .addEventListener("click", () => (color = "gray"));
+const randomBtn = document
+  .querySelector(".random")
+  .addEventListener("click", () => (color = "random"));
+
+  
 function chooseColor() {
   if (color == "random") {
     this.style.backgroundColor = randomRGB();
   } else {
     this.style.backgroundColor = color;
   }
-}
-
-function setColor(colorChoice) {
-  color = colorChoice;
 }
 
 //Clears the board
