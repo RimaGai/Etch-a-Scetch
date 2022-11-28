@@ -1,6 +1,5 @@
 const button = document.querySelector(".size-button");
 const grid = document.querySelector(".container");
-const deleteButton = document.querySelector(".delete");
 let color = "grey";
 
 //Creates a grid
@@ -58,6 +57,11 @@ function chooseColor() {
 function setColor(colorChoice) {
   color = colorChoice;
 }
+
+//Clears the board
+const deleteButton = document
+  .querySelector(".delete")
+  .addEventListener("click", clearBoard);
 
 function clearBoard() {
   let divs = document.querySelectorAll(".cell");
